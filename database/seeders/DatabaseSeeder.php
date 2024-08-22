@@ -36,6 +36,10 @@ class DatabaseSeeder extends Seeder
         DB::table('contacts')->insert(
             [
                 // contacts here
+                // DEFAULTS
+                //ICTS
+                //Studentenadministratie
+                //personeelsdienst
             ]
         );
 
