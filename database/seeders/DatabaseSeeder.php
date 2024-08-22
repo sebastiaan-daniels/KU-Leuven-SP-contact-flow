@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use function Laravel\Prompts\table;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +15,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        DB::table('types')->insert(
+            [
+                // Types here
+            ]
+        );
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        DB::table('users')->insert(
+            [
+                // users here
+            ]
+        );
+
+        DB::table('parameters')->insert(
+            [
+                // parameters here
+            ]
+        );
+
+        DB::table('contacts')->insert(
+            [
+                // contacts here
+            ]
+        );
+
+        DB::table('questions')->insert(
+            [
+                // questions here
+            ]
+        );
     }
 }
