@@ -7,6 +7,7 @@
     @livewireStyles
     <meta name="description" content="{{ $description ?? 'Welkom bij het Servicepunt.' }}">
     <title>ICTS Servicepunt: {{ $title ?? 'Servicepunt' }}</title>
+    <x-layout.favicons/>
 </head>
 <body class="font-sans antialiased">
 <div class="flex flex-col space-y-4 min-h-screen text-gray-800 bg-gray-100">
