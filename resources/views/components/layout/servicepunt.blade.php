@@ -23,7 +23,8 @@
                 <a class="hidden sm:block font-medium text-lg" href="{{ route('home') }}">
                     ICTS Servicepunt
                 </a>
-                <x-nav-link href="{{ route('under-construction') }}" :active="request()->routeIs('under-construction')">
+                <x-nav-link href="{{ route('under-construction') }}" :active="request()->routeIs('under-construction')"
+                data-tippy-content="De CF heeft geen header/footer: Het is een component van de ICTS pagina">
                     Contact flow
                 </x-nav-link>
                 <x-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
