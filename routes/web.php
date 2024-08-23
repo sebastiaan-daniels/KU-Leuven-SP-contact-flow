@@ -13,14 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('test', function () {
     return 'Working!!';
 });
 
+Route::view('/','home')->name('home');
+Route::view('under-construction', 'under-construction')->name('under-construction');
 
 Route::middleware([
     'auth:sanctum',
