@@ -6,7 +6,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     <meta name="description" content="{{ $description ?? 'Welkom bij het Servicepunt.' }}">
-    <title>ICTS Servicepunt: {{ $title ?? 'The Vinyl Shop' }}</title>
+    <title>ICTS Servicepunt: {{ $title ?? 'Servicepunt' }}</title>
 </head>
 <body class="font-sans antialiased">
 <div class="flex flex-col space-y-4 min-h-screen text-gray-800 bg-gray-100">
@@ -14,6 +14,7 @@
         {{--  Navigation  --}}
         <nav class="container mx-auto p-4 flex justify-between items-center">
             <a href="{{ route('home') }}" class="underline">Home</a>
+            <a href="{{ route('under-construction') }}" class="underline">Contact flow volgen</a>
             <a href="{{ route('login') }}" class="underline">Login</a>
         </nav>
     </header>
