@@ -1,4 +1,4 @@
-<x-servicepunt-layout>
+<x-layout.servicepunt>
     <x-slot name="description">This page is under construction</x-slot>
     <x-slot name="title">Welcome to the Vinyl Shop</x-slot>
     <x-slot name="subtitle"></x-slot>
@@ -20,4 +20,4 @@
             </div>
         </div>
     </div>
-</x-servicepunt-layout>
+</x-layout.servicepunt>

@@ -1,4 +1,4 @@
-<x-servicepunt-layout>
+<x-layout.servicepunt>
     <x-slot name="description">Servicepunt Contactflow Login</x-slot>
     <x-slot name="title">Login</x-slot>
     <x-authentication-card>
@@ -48,4 +48,4 @@
             </div>
         </form>
     </x-authentication-card>
-</x-servicepunt-layout>
+</x-layout.servicepunt>
