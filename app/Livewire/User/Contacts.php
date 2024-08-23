@@ -53,7 +53,7 @@ class Contacts extends Component
         $this->showModal = false;
         $this->dispatch('swal:toast', [
             'background' => 'success',
-            'html' => "De locatie <b><i>{$this->form->name} {$this->form->street_name} {$this->form->house_number}</i></b> is geupdate",
+            'html' => "Het contact <b><i>{$this->form->name} {$this->form->street_name} {$this->form->house_number}</i></b> is geupdated",
             'icon' => 'success',
         ]);
     }
@@ -79,7 +79,7 @@ class Contacts extends Component
         $this->showConfirmation = false;
         $this->dispatch('swal:toast', [
             'background' => 'success',
-            'html' => "The contact <b><i>{$contact->name}</i></b> has been deleted",
+            'html' => "Het contact <b><i>{$contact->name}</i></b> is verwijderd",
             'icon' => 'success',
         ]);
     }
@@ -87,6 +87,18 @@ class Contacts extends Component
     #[Layout('components.layout.servicepunt', ['title' => 'Contacten', 'description' => 'Beheer de contacten',])]
     public function render()
     {
-        return view('livewire.user.contacts');
+        $query = Contact::searchName($this->search);
+        if (!$this->active)
+            $query->where('active', false);
+        else
+            $query->where('active', true);
+        $contacts =
+            $query->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage);
+
+        //$contacts = Contact::all();
+
+        return view('livewire.user.contacts', compact('contacts'));
+
     }
 }
