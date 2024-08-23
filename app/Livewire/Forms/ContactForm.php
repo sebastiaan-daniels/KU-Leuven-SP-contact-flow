@@ -14,7 +14,7 @@ class ContactForm extends Form
     #[Validate('required|unique:contacts,name')]
     public $name = null;
 
-    public $mail= null;
+    public $email= null;
 
     public $logo = null;
     public $website= null;
@@ -27,7 +27,7 @@ class ContactForm extends Form
         $this->validate();
         Contact::create([
             'name' => $this->name,
-            'email' => $this->mail,
+            'email' => $this->email,
             'logo' => $this->logo,
             'website' => $this->website,
             'phone' => $this->phone,
@@ -40,7 +40,7 @@ class ContactForm extends Form
         $this->validate();
         $contact->update([
             'name' => $this->name,
-            'email' => $this->mail,
+            'email' => $this->email,
             'logo' => $this->logo,
             'website' => $this->website,
             'phone' => $this->phone,

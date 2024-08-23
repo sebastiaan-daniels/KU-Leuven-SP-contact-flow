@@ -74,7 +74,7 @@
                 <td>
                     <div class="border border-gray-300 rounded-md overflow-hidden m-2 grid grid-cols-2 h-10">
                         <button
-                            wire:click="editLocation({{ $contact->id }})"
+                            wire:click="editContact({{ $contact->id }})"
                             class="text-gray-400 hover:text-sky-100 primaryHover transition border-r border-gray-300">
                             <x-phosphor-pencil-line-duotone class="inline-block w-5 h-5"/>
                         </button>
@@ -92,81 +92,82 @@
     <div class="my-4">{{ $contacts->links() }}</div>
 
     {{-- Modal for add and update record --}}
-{{--    <x-dialog-modal id="locationModal"--}}
-{{--                    wire:model.live="showModal">--}}
-{{--        <x-slot name="title">--}}
-{{--            @if(is_null($form->id))--}}
-{{--                <h2>Locatie aanmaken</h2>--}}
-{{--            @else--}}
-{{--                <h2>Locatie aanpassen</h2>--}}
-{{--            @endif--}}
-{{--        </x-slot>--}}
-{{--        <x-slot name="content">--}}
-{{--            --}}{{-- error messages --}}
-{{--            @if ($errors->any())--}}
-{{--                <x-icts.alert type="danger">--}}
-{{--                    <x-icts.list>--}}
-{{--                        @foreach ($errors->all() as $error)--}}
-{{--                            <li>{{ $error }}</li>--}}
-{{--                        @endforeach--}}
-{{--                    </x-icts.list>--}}
-{{--                </x-icts.alert>--}}
-{{--            @endif--}}
+    <x-dialog-modal id="contactModal"
+                    wire:model.live="showModal">
+        <x-slot name="title">
+            @if(is_null($form->id))
+                <h2>Contact aanmaken</h2>
+            @else
+                <h2>Contact aanpassen</h2>
+            @endif
+        </x-slot>
+        <x-slot name="content">
+{{--             error messages --}}
+            @if ($errors->any())
+                <x-icts.alert type="danger">
+                    <x-icts.list>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </x-icts.list>
+                </x-icts.alert>
+            @endif
 
-{{--            <div class="flex flex-row gap-4 mt-4">--}}
-{{--                <div class="flex-1 flex-col gap-2">--}}
-{{--                    <x-label for="Naam" value="Naam" class="mt-4"/>--}}
-{{--                    <x-input id="Naam" type="text"--}}
-{{--                             wire:model="form.name"--}}
-{{--                             class="mt-1 block w-full"/>--}}
-{{--                    <x-label for="Stad" value="Stad" class="mt-4"/>--}}
-{{--                    <x-icts.form.select wire:model="form.city_id" id="city_id" class="block mt-1 w-full">--}}
-{{--                        <option value="">Stad</option>--}}
-{{--                        @foreach($allCities as $cities)--}}
-{{--                            <option value="{{ $cities->id }}">{{ $cities->name }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </x-icts.form.select>--}}
-{{--                    <x-label for="street_name" value="Straat Naam" class="mt-4"/>--}}
-{{--                    <x-input id="street_name" type="text"--}}
-{{--                             wire:model="form.street_name"--}}
-{{--                             class="mt-1 block w-full"/>--}}
-{{--                    <x-label for="house_number" value="Huis Nummer" class="mt-4"/>--}}
-{{--                    <x-input id="house_number" type="number"--}}
-{{--                             wire:model="form.house_number"--}}
-{{--                             class="mt-1 block w-full"/>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </x-slot>--}}
-{{--        <x-slot name="footer">--}}
-{{--            <x-secondary-button @click="$wire.showModal = false">Annuleren</x-secondary-button>--}}
-{{--            @if(is_null($form->id))--}}
-{{--                <x-icts.form.button color="info"--}}
-{{--                                   wire:click="createLocation({{ $form->id }})"--}}
-{{--                                   class="ml-2">Aanmaken--}}
-{{--                </x-icts.form.button>--}}
-{{--            @else--}}
-{{--                <x-icts.form.button color="info"--}}
-{{--                                   wire:click="updateLocation({{ $form->id }})"--}}
-{{--                                   class="ml-2">Opslaan--}}
-{{--                </x-icts.form.button>--}}
-{{--            @endif--}}
-{{--        </x-slot>--}}
-{{--    </x-dialog-modal>--}}
+            <div class="flex flex-row gap-4 mt-4">
+                <div class="flex-1 flex-col gap-2">
+                    <x-label for="Naam" value="Naam" class="mt-4"/>
+                    <x-input id="Naam" type="text"
+                             wire:model="form.name"
+                             class="mt-1 block w-full"/>
+                    <x-label for="email" value="Email" class="mt-4"/>
+                    <x-input id="email" type="text"
+                             wire:model="form.email"
+                             class="mt-1 block w-full"/>
+                    <x-label for="logo" value="Logo URL" class="mt-4"/>
+                    <x-input id="logo" type="text"
+                             wire:model="form.logo"
+                             class="mt-1 block w-full"/>
+                    <x-label for="website" value="Website" class="mt-4"/>
+                    <x-input id="website" type="text"
+                             wire:model="form.website"
+                             class="mt-1 block w-full"/>
+                    <x-label for="phone" value="Telefoon nummer" class="mt-4"/>
+                    <x-input id="phone" type="text"
+                             wire:model="form.phone"
+                             class="mt-1 block w-full"/>
+                </div>
+            </div>
+        </x-slot>
+        <x-slot name="footer">
+            <x-secondary-button @click="$wire.showModal = false">Annuleren</x-secondary-button>
+            @if(is_null($form->id))
+                <x-icts.form.button color="info"
+                                   wire:click="createContact({{ $form->id }})"
+                                   class="ml-2">Aanmaken
+                </x-icts.form.button>
+            @else
+                <x-icts.form.button color="info"
+                                   wire:click="updateContact({{ $form->id }})"
+                                   class="ml-2">Opslaan
+                </x-icts.form.button>
+            @endif
+        </x-slot>
+    </x-dialog-modal>
 
-{{--    <x-confirmation-modal id="deleteConfirmation"--}}
-{{--                          wire:model.live="showConfirmation">--}}
-{{--        <x-slot name="title">Delete record</x-slot>--}}
-{{--        <x-slot name="content">Are you sure you want to delete <b>{{ $form->name }}, {{ $form->street_name }} {{ $form->house_number }}</b></x-slot>--}}
-{{--        <x-slot name="footer">--}}
-{{--            <x-button @click="$wire.showConfirmation = false" class="mr-1 bg-white hover:bg-white focus:bg-white active:bg-white">--}}
-{{--                <p class="text-black">Annuleren</p>--}}
-{{--            </x-button>--}}
-{{--            <x-danger-button--}}
-{{--                wire:click="deleteRecord({{ $form->id }})"--}}
-{{--                class="mr-1 ml-2">--}}
-{{--                Verwijder Locatie--}}
-{{--            </x-danger-button>--}}
-{{--        </x-slot>--}}
+    <x-confirmation-modal id="deleteConfirmation"
+                          wire:model.live="showConfirmation">
+        <x-slot name="title">Verwijder record</x-slot>
+        <x-slot name="content">Ben je zeker dat je  <b>{{ $form->name }}</b> wilt verwijderen?</x-slot>
+        <x-slot name="footer">
+            <x-button @click="$wire.showConfirmation = false" class="mr-1 bg-white hover:bg-white focus:bg-white active:bg-white">
+                <p class="text-black">Annuleren</p>
+            </x-button>
+            <x-danger-button
+                wire:click="deleteRecord({{ $form->id }})"
+                class="mr-1 ml-2">
+                Verwijder Contact
+            </x-danger-button>
+        </x-slot>
 
-{{--    </x-confirmation-modal>--}}
+    </x-confirmation-modal>
 </div>
