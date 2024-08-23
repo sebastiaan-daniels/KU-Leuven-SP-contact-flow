@@ -18,6 +18,7 @@ Route::get('test', function () {
 });
 
 Route::view('/','home')->name('home');
+//Route::view('home','home')->name('home');
 Route::view('under-construction', 'under-construction')->name('under-construction');
 
 Route::middleware([
