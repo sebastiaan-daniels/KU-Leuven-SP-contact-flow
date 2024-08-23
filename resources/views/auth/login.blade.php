@@ -1,5 +1,8 @@
-<x-guest-layout>
+<x-servicepunt-layout>
+    <x-slot name="description">Servicepunt Contactflow Login</x-slot>
+    <x-slot name="title">Login</x-slot>
     <x-authentication-card>
+
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
@@ -45,4 +48,4 @@
             </div>
         </form>
     </x-authentication-card>
-</x-guest-layout>
+</x-servicepunt-layout>
