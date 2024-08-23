@@ -55,19 +55,23 @@
                         <div class="block px-4 py-2 text-xs text-gray-400">{{ auth()->user()->name }}</div>
                         <x-dropdown-link href="{{ route('dashboard') }}">Dashboard</x-dropdown-link>
                         <x-dropdown-link href="{{ route('profile.show') }}">Update Profile</x-dropdown-link>
-                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
-                        <div class="border-t border-gray-100"></div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">Logout</button>
-                        </form>
-                        <div class="border-t border-gray-100"></div>
+                        <x-dropdown-link href="{{ route('user.contacts') }}">Contacten beheren</x-dropdown-link>
+
+                        @if(auth()->user()->admin)
                         {{-- admins only --}}
+                            <div class="border-t border-gray-100"></div>
                         <div class="block px-4 py-2 text-xs text-gray-400">Admin</div>
                         <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
                         <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
                         <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
                         <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
+                        @endif
+                        <div class="border-t border-gray-100"></div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">Logout</button>
+                        </form>
+
                     </x-slot>
                 </x-dropdown>
                     @endauth

@@ -1,6 +1,8 @@
 <?php
 
+use App\Livewire\User\Contacts;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/','home')->name('home');
+
+// Contact pagina met mail
 Route::view('contact','contact')->name('contact');
+
+// CRUD pagina om contacten te beheren
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
+    Route::get('contacts', Contacts::class)->name('contacts');
+});
+
+/*
+  // CRUD pagina om contacten te beheren
+Route::middleware(['auth', 'admin'])->prefix('user')->name('user.')->group(function () {
+    Route::get('contacts', Contacts::class)->name('contacts');
+});
+
+ * */
 Route::view('under-construction', 'under-construction')->name('under-construction');
 
 Route::middleware([
