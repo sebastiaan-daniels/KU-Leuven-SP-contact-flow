@@ -136,6 +136,15 @@ class DatabaseSeeder extends Seeder
                     'logo'=>null,
                     'website'=>'https://admin.kuleuven.be/personeel/wegbeschrijving.html',
                     'active'=>true
+                ],
+                // studiegelden
+                [
+                    'name'=>'KU Leuven Studiegelden',
+                    'email'=>'sab@kuleuven.be',
+                    'phone'=>'+32 16 32 37 70',
+                    'logo'=>null,
+                    'website'=>'https://www.kuleuven.be/onderwijs/student/studiegelden',
+                    'active'=>true
                 ]
             ]
         );
@@ -144,6 +153,80 @@ class DatabaseSeeder extends Seeder
             [
                 // questions here
                 // Niet aanpassen in de seeder bij Production!
+                // Onderstaande vragen zijn voor testing!
+                [
+                    'type_id'=>1,
+                    'contact_id'=>null,
+                    'name'=>'Wat voor type ben je?',
+                    'question'=>'Wat voor type ben je?',
+                    'parent_id'=>null,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>1,
+                    'name'=>'Medewerker',
+                    'question'=>null,
+                    'parent_id'=>1,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>null,
+                    'name'=>'Student',
+                    'question'=>'Wat is je probleem?',
+                    'parent_id'=>1,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>null,
+                    'name'=>'Toekomstige student',
+                    'question'=>'Wat is je probleem?',
+                    'parent_id'=>1,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>1,
+                    'name'=>'ICT vraag',
+                    'question'=>null,
+                    'parent_id'=>3,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>2,
+                    'name'=>'Jobstudenten vraag',
+                    'question'=>null,
+                    'parent_id'=>3,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>1,
+                    'name'=>'Ik kan niet inloggen op Toledo',
+                    'question'=>null,
+                    'parent_id'=>4,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>4,
+                    'name'=>'Ik heb een financiële vraag',
+                    'question'=>null,
+                    'parent_id'=>4,
+                    'active'=>true
+                ],
+                [
+                    'type_id'=>1,
+                    'contact_id'=>1,
+                    'name'=>'Iets anders',
+                    'question'=>null,
+                    'parent_id'=>4,
+                    'active'=>true
+                ],
+
             ]
         );
     }
