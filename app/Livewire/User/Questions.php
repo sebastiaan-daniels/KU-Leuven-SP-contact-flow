@@ -4,6 +4,7 @@ namespace App\Livewire\User;
 
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Livewire\Forms\QuestionForm;
 
 class Questions extends Component
 {
