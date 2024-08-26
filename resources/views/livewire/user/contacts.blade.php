@@ -24,9 +24,9 @@
         <x-icts.form.switch id="active"
                            wire:model.live="active"
                            text-off="inactief"
-                           color-off="bg-gray-100 before:line-through"
+                           color-off="bg-red-500 before:line-through text-white"
                            text-on="Actief"
-                           color-on="text-white primary"
+                           color-on="text-white bg-sky-500"
                            class="w-20 h-auto" />
         <x-button class="primary" wire:click="newContact()">
             Nieuw Contact
@@ -71,7 +71,7 @@
         </thead>
 
         <tbody class="border-t-4 border-black">
-        @foreach($contacts as $contact)
+        @forelse($contacts as $contact)
             <tr class="border-t border-gray-300 [&>td]:p-2">
                 <td class="text-left"><span data-tippy-content="{{ $contact->description}}">{{ $contact->name }}</span></td>
                 <td class="text-left">{{ $contact->email }}</td>
@@ -82,7 +82,7 @@
                     <div class="border border-gray-300 rounded-md overflow-hidden m-2 grid grid-cols-2 h-10">
                         <button
                             wire:click="editContact({{ $contact->id }})"
-                            class="text-gray-400 hover:text-sky-100 primaryHover transition border-r border-gray-300">
+                            class="text-gray-400 hover:text-sky-100 hover:bg-sky-500 transition border-r border-gray-300">
                             <x-phosphor-pencil-line-duotone class="inline-block w-5 h-5"/>
                         </button>
                         <button
@@ -93,7 +93,13 @@
                     </div>
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="6" class="border-t border-gray-300 p-4 text-center text-gray-500">
+                    <div class="font-bold italic text-sky-800">Geen contacten gevonden</div>
+                </td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
     <div class="my-4">{{ $contacts->links() }}</div>
