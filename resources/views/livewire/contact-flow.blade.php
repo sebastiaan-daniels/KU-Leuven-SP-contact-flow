@@ -26,7 +26,7 @@
             <a href="{{$contact->website}}" class="underline">{{$contact->website}}</a>
         @endif
     @else
-        <h1>{{$question->name}}</h1>
+        <h1>{{$question->child_question}}</h1>
         <x-icts.list type="ul" class="list-outside mx-4 text-sm">
             @foreach($children as $child)
                 <li>

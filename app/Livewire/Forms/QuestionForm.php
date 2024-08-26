@@ -34,6 +34,10 @@ class QuestionForm extends Form
 
     // update record
     public function update(Question $question) {
+        // Normalize the values to null if they are empty strings
+        $this->contact_id = $this->contact_id === '' ? null : $this->contact_id;
+        $this->child_question = $this->child_question === '' ? null : $this->child_question;
+
         $this->validate($this->rules($question->id));
         $question->update([
             'type_id' => $this->type,

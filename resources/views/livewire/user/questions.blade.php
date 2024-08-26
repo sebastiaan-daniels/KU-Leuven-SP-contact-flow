@@ -155,7 +155,7 @@
                              class="mt-1 block w-full"/>
                     <x-label for="parent" value="Vorige vraag" class="mt-4"/>
                     <x-icts.form.select wire:model="form.parent_id" id="parent" class="block w-30">
-                        <option value="null">Selecteer vorige vraag (parent)</option>
+                        <option value="">Selecteer vorige vraag (parent)</option>
                         @foreach($nonEndingQuestions as $parent)
                             <option value="{{ $parent->id }}">{{$parent->id}}: {{ $parent->name }}</option>
                         @endforeach
@@ -169,7 +169,7 @@
 
                     <x-label for="contact_id" value="Contactinfo na selectie" class="mt-4"/>
                     <x-icts.form.select wire:model="form.contact_id" id="contact_id" class="block w-30">
-                        <option value="null">Selecteer de contactinfo na deze optie</option>
+                        <option value="">Selecteer de contactinfo na deze optie</option>
                         @foreach($contacts as $contact)
                             <option value="{{ $contact->id }}">{{ $contact->name }}</option>
                         @endforeach
