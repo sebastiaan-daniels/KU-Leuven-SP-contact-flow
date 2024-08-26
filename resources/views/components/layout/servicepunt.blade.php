@@ -56,6 +56,7 @@
                         <x-dropdown-link href="{{ route('dashboard') }}">Dashboard</x-dropdown-link>
                         <x-dropdown-link href="{{ route('profile.show') }}">Update Profile</x-dropdown-link>
                         <x-dropdown-link href="{{ route('user.contacts') }}">Contacten beheren</x-dropdown-link>
+                        <x-dropdown-link href="{{ route('user.questions') }}">Vragen beheren</x-dropdown-link>
 
                         @if(auth()->user()->admin)
                         {{-- admins only --}}

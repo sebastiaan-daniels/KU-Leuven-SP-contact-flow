@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\User\Contacts;
+use App\Livewire\User\Questions;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,6 +24,7 @@ Route::view('contact','contact')->name('contact');
 // CRUD pagina om contacten te beheren
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::get('contacts', Contacts::class)->name('contacts');
+    Route::get('questions', Questions::class)->name('questions');
 });
 
 /*
