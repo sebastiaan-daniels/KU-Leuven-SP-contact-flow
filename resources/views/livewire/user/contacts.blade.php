@@ -2,7 +2,7 @@
     {{-- show preloader while fetching data in the background --}}
     <div class="fixed top-8 left-1/2 -translate-x-1/2 z-50 animate-pulse"
          wire:loading>
-        <x-icts.preloader class="primary text-white border border-lime-700 shadow-2xl">
+        <x-icts.preloader class="bg-sky-400 text-white border border-lime-700 shadow-2xl">
             {{ $loading }}
         </x-icts.preloader>
     </div>

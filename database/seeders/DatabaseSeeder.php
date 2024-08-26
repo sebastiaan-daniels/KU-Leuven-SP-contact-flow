@@ -165,7 +165,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>null,
                     'name'=>'Wat voor type ben je?',
-                    'question'=>'Wat voor type ben je?',
+                    'child_question'=>'Wat voor type ben je?',
                     'parent_id'=>null,
                     'active'=>true
                 ],
@@ -173,7 +173,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>1,
                     'name'=>'Medewerker',
-                    'question'=>null,
+                    'child_question'=>null,
                     'parent_id'=>1,
                     'active'=>true
                 ],
@@ -181,7 +181,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>null,
                     'name'=>'Student',
-                    'question'=>'Wat is je probleem?',
+                    'child_question'=>'Wat is je probleem?',
                     'parent_id'=>1,
                     'active'=>true
                 ],
@@ -189,7 +189,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>null,
                     'name'=>'Toekomstige student',
-                    'question'=>'Wat is je probleem?',
+                    'child_question'=>'Wat is je probleem?',
                     'parent_id'=>1,
                     'active'=>true
                 ],
@@ -197,7 +197,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>1,
                     'name'=>'ICT vraag',
-                    'question'=>null,
+                    'child_question'=>null,
                     'parent_id'=>3,
                     'active'=>true
                 ],
@@ -205,7 +205,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>2,
                     'name'=>'Jobstudenten vraag',
-                    'question'=>null,
+                    'child_question'=>null,
                     'parent_id'=>3,
                     'active'=>true
                 ],
@@ -213,7 +213,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>1,
                     'name'=>'Ik kan niet inloggen op Toledo',
-                    'question'=>null,
+                    'child_question'=>null,
                     'parent_id'=>4,
                     'active'=>true
                 ],
@@ -221,7 +221,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>4,
                     'name'=>'Ik heb een financiële vraag',
-                    'question'=>null,
+                    'child_question'=>null,
                     'parent_id'=>4,
                     'active'=>true
                 ],
@@ -229,7 +229,7 @@ class DatabaseSeeder extends Seeder
                     'type_id'=>1,
                     'contact_id'=>1,
                     'name'=>'Iets anders',
-                    'question'=>null,
+                    'child_question'=>null,
                     'parent_id'=>4,
                     'active'=>true
                 ],

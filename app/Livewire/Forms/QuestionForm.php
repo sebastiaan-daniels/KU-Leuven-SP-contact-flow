@@ -11,11 +11,11 @@ class QuestionForm extends Form
 {
     public $id = null;
 
-    public $type = null;
-    public $contact = null;
+    public $type = 1;
+    public $contact_id = null;
     public $name = null;
     public $child_question = null;
-    public $parent = null;
+    public $parent_id = null;
     public $active = null;
 
     // create a new record
@@ -24,10 +24,10 @@ class QuestionForm extends Form
         $this->validate($this->rules());
         Question::create([
             'type_id' => $this->type,
-            'contact_id' => $this->contact,
+            'contact_id' => $this->contact_id,
             'name' => $this->name,
-            'question' => $this->child_question,
-            'parent_id' => $this->parent,
+            'child_question' => $this->child_question,
+            'parent_id' => $this->parent_id,
             'active' => true
         ]);
     }
@@ -37,10 +37,10 @@ class QuestionForm extends Form
         $this->validate($this->rules($question->id));
         $question->update([
             'type_id' => $this->type,
-            'contact_id' => $this->contact,
+            'contact_id' => $this->contact_id,
             'name' => $this->name,
-            'question' => $this->child_question,
-            'parent_id' => $this->parent,
+            'child_question' => $this->child_question,
+            'parent_id' => $this->parent_id,
             'active' => true
         ]);
     }
@@ -55,10 +55,10 @@ class QuestionForm extends Form
     protected function rules($id = null)
     {
         return [
-            'type_id' => 'required',
+            'type' => 'required',
             'contact_id' => 'nullable|integer',
             'name' => 'required|string',
-            'question' => 'nullable|string',
+            'child_question' => 'nullable|string',
             'parent_id' => 'nullable|integer',
         ];
     }
