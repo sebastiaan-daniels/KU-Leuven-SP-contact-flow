@@ -53,7 +53,7 @@ class Contacts extends Component
         $this->showModal = false;
         $this->dispatch('swal:toast', [
             'background' => 'success',
-            'html' => "Het contact <b><i>{$this->form->name} {$this->form->street_name} {$this->form->house_number}</i></b> is geupdated",
+            'html' => "Het contact <b><i>{$this->form->name}</i></b> is geüpdated",
             'icon' => 'success',
         ]);
     }
