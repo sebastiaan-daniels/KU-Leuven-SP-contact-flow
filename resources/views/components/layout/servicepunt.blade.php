@@ -52,7 +52,7 @@
                     </x-slot>
                     <x-slot name="content">
                         {{-- all users --}}
-                        <div class="block px-4 py-2 text-xs text-gray-400">{{ auth()->user()->name }}</div>
+                        <div class="block px-4 py-2 text-xs text-gray-400">Welkom, {{ auth()->user()->name }}</div>
                         <x-dropdown-link href="{{ route('dashboard') }}">Dashboard</x-dropdown-link>
                         <x-dropdown-link href="{{ route('profile.show') }}">Update Profile</x-dropdown-link>
                         <x-dropdown-link href="{{ route('user.contacts') }}">Contacten beheren</x-dropdown-link>
