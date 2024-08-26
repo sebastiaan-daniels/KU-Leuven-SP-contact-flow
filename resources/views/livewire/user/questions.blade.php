@@ -55,8 +55,8 @@
                 {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
             "/>
             </th>
+            <th>Vorige vraag</th>
             <th>Question</th>
-            <th>Parent_id</th>
             <th>Contact_id </th>
             <th></th>
             <th class="text-black">
@@ -81,12 +81,19 @@
                 } else {
                     $contactName = $contact->name;
                 }
+
+                $parent = $this->fetchQuestionFromId($question->parent_id);
+                if (is_null($parent)) {
+                    $parentName = 'Eerste vraag';
+                } else {
+                    $parentName = $parent->id . ': ' . $parent->name;
+                }
             @endphp
             <tr class="border-t border-gray-300 [&>td]:p-2">
                 <td class="text-left">{{ $question->id }}</td>
                 <td class="text-left">{{ $question->name }}</td>
+                <td class="text-left">{{ $parentName}}</td>
                 <td class="text-left">{{ $question->child_question ?? '/'}}</td>
-                <td class="text-left">{{ $question->parent_id ?? 'Eerste vraag'}}</td>
                 <td class="text-left">{{$contactName}}</td>
                 <td></td>
                 <td>
@@ -148,11 +155,12 @@
                              class="mt-1 block w-full"/>
                     <x-label for="parent" value="Vorige vraag" class="mt-4"/>
                     <x-icts.form.select wire:model="form.parent_id" id="parent" class="block w-30">
-                        <option value="null">Selecteer "Parent"</option>
+                        <option value="null">Selecteer vorige vraag (parent)</option>
                         @foreach($nonEndingQuestions as $parent)
                             <option value="{{ $parent->id }}">{{$parent->id}}: {{ $parent->name }}</option>
                         @endforeach
                     </x-icts.form.select>
+                    <hr class="border-2 my-8">
                     <x-label for="child_question" value="Volgende vraag" class="mt-4"/>
                     <x-input id="child_question" type="text"
                                           wire:model="form.child_question"

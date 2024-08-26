@@ -28,6 +28,11 @@ class Questions extends Component
         return Contact::find($id);
     }
 
+    public function fetchQuestionFromId($id)
+    {
+        return Question::find($id);
+    }
+
     public function fetchNonEndingQuestions()
     {
         return Question::whereNotNull('child_question')->get();
