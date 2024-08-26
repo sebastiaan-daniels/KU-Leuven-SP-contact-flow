@@ -12,7 +12,7 @@
         <div class="flex-1">
             <div class="relative">
                 <x-input id="search" type="text" placeholder="Filter naam"
-                         wire:model.live.debounce.500ms="search"
+                         wire:model.debounce.500ms="search"
                          class="w-full shadow-md placeholder-gray-300"/>
                 <button
                     @click="$wire.set('search', '')"
