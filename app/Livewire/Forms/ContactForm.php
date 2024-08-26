@@ -5,26 +5,22 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use App\Models\Contact;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ContactForm extends Form
 {
     public $id = null;
 
-    #[Validate('required|unique:contacts,name')]
     public $name = null;
-
-    public $email= null;
-
+    public $email = null;
     public $logo = null;
-    public $website= null;
-    public $phone= null;
-
+    public $website = null;
+    public $phone = null;
 
     // create a new record
     public function create()
     {
-        $this->validate();
+        $this->validate($this->rules());
         Contact::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -37,7 +33,7 @@ class ContactForm extends Form
 
     // update record
     public function update(Contact $contact) {
-        $this->validate();
+        $this->validate($this->rules($contact->id));
         $contact->update([
             'name' => $this->name,
             'email' => $this->email,
@@ -52,4 +48,17 @@ class ContactForm extends Form
     {
         $contact->delete();
     }
+
+    // Validation rules
+    protected function rules($id = null)
+    {
+        return [
+            'name' => ['required', Rule::unique('contacts', 'name')->ignore($id)],
+            'email' => 'nullable|email',
+            'logo' => 'nullable|url',
+            'website' => 'nullable|url',
+            'phone' => 'nullable|string',
+        ];
+    }
 }
+
