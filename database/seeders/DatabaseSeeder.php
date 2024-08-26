@@ -113,6 +113,7 @@ class DatabaseSeeder extends Seeder
                 //ICTS
                 [
                     'name'=>'KU Leuven ICTS Servicepunt',
+                    'description'=>'Voor algemene vragen kan je het ICTS Servicepunt contacteren',
                     'email'=>'icts@kuleuven.be',
                     'phone'=>'+32 16 32 28 00',
                     'logo'=>null,
@@ -122,6 +123,8 @@ class DatabaseSeeder extends Seeder
                 //Studentenadministratie
                 [
                     'name'=>'KU Leuven Studentenadministratie',
+                    'description'=>'Voor al je administratieve vragen als student, contacteer je best de Studentenadministratie
+                    . Wij zijn de IT dienst en kunnen je hier niet bij helpen.',
                     'email'=>'reg@kuleuven.be',
                     'phone'=>'+32 16 32 40 40',
                     'logo'=>null,
@@ -131,6 +134,8 @@ class DatabaseSeeder extends Seeder
                 //personeelsdienst
                 [
                     'name'=>'KU Leuven Personeelsdienst',
+                    'description'=>'Voor al je administratieve vragen als medewerker, contacteer je best de Personeelsdienst
+                    . Wij zijn de IT dienst en kunnen je hier niet bij helpen.',
                     'email'=>'personeelsdienst@kuleuven.be',
                     'phone'=>'+32 16 32 83 00',
                     'logo'=>null,
@@ -140,6 +145,8 @@ class DatabaseSeeder extends Seeder
                 // studiegelden
                 [
                     'name'=>'KU Leuven Studiegelden',
+                    'description'=>'Voor al je financiële vragen als student, contacteer je best de dienst Studiegelden
+                    . Wij zijn de IT dienst en kunnen je hier niet bij helpen.',
                     'email'=>'sab@kuleuven.be',
                     'phone'=>'+32 16 32 37 70',
                     'logo'=>null,
