@@ -12,6 +12,7 @@ class ContactForm extends Form
     public $id = null;
 
     public $name = null;
+    public $description = null;
     public $email = null;
     public $logo = null;
     public $website = null;
@@ -23,6 +24,7 @@ class ContactForm extends Form
         $this->validate($this->rules());
         Contact::create([
             'name' => $this->name,
+            'description' => $this->description,
             'email' => $this->email,
             'logo' => $this->logo,
             'website' => $this->website,
@@ -36,6 +38,7 @@ class ContactForm extends Form
         $this->validate($this->rules($contact->id));
         $contact->update([
             'name' => $this->name,
+            'description' => $this->description,
             'email' => $this->email,
             'logo' => $this->logo,
             'website' => $this->website,
@@ -54,6 +57,7 @@ class ContactForm extends Form
     {
         return [
             'name' => ['required', Rule::unique('contacts', 'name')->ignore($id)],
+            'description' => 'required|string',
             'email' => 'nullable|email',
             'logo' => 'nullable|url',
             'website' => 'nullable|url',

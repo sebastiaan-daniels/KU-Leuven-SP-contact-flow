@@ -45,7 +45,14 @@
         </colgroup>
         <thead>
         <tr class="mt-3 text-left w-full">
-            <th wire:click="resort('name')"><span data-tippy-content="Sorteer op naam">Naam</span></th>
+            <th wire:click="resort('name')">
+                <span data-tippy-content="Sorteer op naam">Naam</span>
+                <x-heroicon-s-chevron-up
+                    class="w-5 text-slate-400
+                {{$orderAsc ?: 'rotate-180'}}
+                {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
+            "/>
+            </th>
             <th>email</th>
             <th>website</th>
             <th>phone </th>
@@ -66,7 +73,7 @@
         <tbody class="border-t-4 border-black">
         @foreach($contacts as $contact)
             <tr class="border-t border-gray-300 [&>td]:p-2">
-                <td class="text-left">{{ $contact->name }}</td>
+                <td class="text-left"><span data-tippy-content="{{ $contact->description}}">{{ $contact->name }}</span></td>
                 <td class="text-left">{{ $contact->email }}</td>
                 <td class="text-left">{{ $contact->website }}</td>
                 <td class="text-left">{{ $contact->phone}}</td>
@@ -118,6 +125,10 @@
                     <x-label for="Naam" value="Naam" class="mt-4"/>
                     <x-input id="Naam" type="text"
                              wire:model="form.name"
+                             class="mt-1 block w-full"/>
+                    <x-label for="description" value="Beschrijving" class="mt-4"/>
+                    <x-icts.form.textarea id="description" type="textarea"
+                             wire:model="form.description"
                              class="mt-1 block w-full"/>
                     <x-label for="email" value="Email" class="mt-4"/>
                     <x-input id="email" type="text"
