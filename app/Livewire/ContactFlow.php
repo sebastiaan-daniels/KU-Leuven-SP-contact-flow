@@ -19,7 +19,9 @@ class ContactFlow extends Component
     }
     public function fetchChildrenById($id)
     {
-        $children = Question::where('parent_id', '=', $id)->get();
+        $children = Question::where('parent_id', '=', $id)
+            ->where('active', true)
+            ->get();
         return $children;
     }
     public function updateCurrentQuestion($id)
