@@ -30,12 +30,6 @@
         }
     </style>
 
-    <div class="fixed top-8 left-1/2 -translate-x-1/2 z-50 animate-pulse"
-         wire:loading>
-        <x-icts.preloader class="soft_bg text-black border shadow-2xl">
-            {{ $loading }}
-        </x-icts.preloader>
-    </div>
 
     @if($children->isEmpty())
         @php
@@ -66,6 +60,7 @@
         <x-icts.list type="ul" class="list-none text-sm">
             @foreach($children as $child)
                 <li>
+                    @csrf
                     <button
                         wire:click="updateCurrentQuestion({{ $child->id }})"
                         class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600

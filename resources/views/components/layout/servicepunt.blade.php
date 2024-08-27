@@ -90,7 +90,8 @@
     </main>
     <footer class="container mx-auto p-4 text-sm border-t flex justify-between items-center">
         <div>ICTS KULeuven - © {{ date('Y') }}</div>
-        <div>Built with ❤ by S.D.</div>
+        <div><a href="mailto:contact@sebastiaandaniels.com">Built with ❤ by S.D.</a></div>
+
     </footer>
 </div>
 @stack('script')
