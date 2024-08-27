@@ -53,9 +53,9 @@
                 {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
             "/>
             </th>
-            <th>email</th>
-            <th>website</th>
-            <th>phone </th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Telefoon </th>
             <th></th>
             <th class="text-black">
                 <x-icts.form.select id="perPage"

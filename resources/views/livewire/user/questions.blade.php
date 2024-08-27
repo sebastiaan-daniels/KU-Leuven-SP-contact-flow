@@ -48,7 +48,7 @@
         <tr class="mt-3 text-left w-full">
             <th><span data-tippy-content="Interne ID in de database">ID</span></th>
             <th wire:click="resort('id')">
-                <span data-tippy-content="Sorteer op ID">Name</span>
+                <span data-tippy-content="Sorteer op ID">Naam van de vraag</span>
                 <x-heroicon-s-chevron-up
                     class="w-5 text-slate-400
                 {{$orderAsc ?: 'rotate-180'}}
@@ -56,8 +56,8 @@
             "/>
             </th>
             <th>Vorige vraag</th>
-            <th>Question</th>
-            <th>Contact_id </th>
+            <th>Volgende Vraag</th>
+            <th>Volgend Contact </th>
             <th></th>
             <th class="text-black">
                 <x-icts.form.select id="perPage"
