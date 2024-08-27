@@ -5,6 +5,7 @@
 
         html {
             font-size: 1.15rem;
+            background-color: white;
         }
         h1,h2,h4 {
             font-family: Source Serif Pro,serif;
