@@ -7,10 +7,11 @@ use App\Models\Question;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Livewire\Forms\QuestionForm;
+use Livewire\WithPagination;
 
 class Questions extends Component
 {
-
+    use WithPagination;
     public $search;
     public $active = true;
     public $loading = 'Even geduld...';
