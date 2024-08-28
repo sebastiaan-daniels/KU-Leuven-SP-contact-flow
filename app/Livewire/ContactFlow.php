@@ -29,6 +29,13 @@ class ContactFlow extends Component
         $this->currentQuestion = $id;
     }
 
+    public function goBack($id)
+    {
+        // Fetches the ID of the parent question and sets it as the current question.
+        $question = $this->fetchCurrentQuestionById($id);
+        $this->currentQuestion = $question->parent_id;
+    }
+
     public function fetchContactById($id)
     {
         return Contact::find($id);

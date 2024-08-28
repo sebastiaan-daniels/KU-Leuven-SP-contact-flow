@@ -64,12 +64,25 @@
                     <button
                         wire:click="updateCurrentQuestion({{ $child->id }})"
                         class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
-                         transition duration-300 shadow-sm underline">
+                         transition duration-300 shadow-sm underline flex items-center">
                         {{ $child->name }}
                     </button>
                 </li>
-
             @endforeach
+
+            @if(!is_null($question->parent_id))
+                    <li>
+                        <button
+                            wire:click="goBack({{ $question->id}})"
+                            class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
+                         transition duration-300 shadow-sm underline flex items-center">
+                            <x-letsicon-back class="h-6 w-6 mr-2 text-black"/>
+                            Vorige vraag
+                        </button>
+                    </li>
+            @endif
+
+
         </x-icts.list>
     @endif
 </div>
