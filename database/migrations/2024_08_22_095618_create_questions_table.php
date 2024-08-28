@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('type_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('contact_id')->nullable()->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('parent_id')->nullable()->constrained('questions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('type_id')->constrained()->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignId('contact_id')->nullable()->constrained()->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignId('parent_id')->nullable()->constrained('questions')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->string('child_question')->nullable();
             $table->boolean('active');
