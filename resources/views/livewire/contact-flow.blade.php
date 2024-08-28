@@ -17,6 +17,9 @@
             font-size: 1.6rem;
         }
 
+        .iconcolor {
+            color: #004070;
+        }
         .soft_bg {
             background-color: #d4e7f3;
         }
@@ -41,15 +44,28 @@
             <h3>{{$contact->name}}</h3>
             @if(!is_null($contact->email))
                 <h4>Email:</h4>
-                <a href="mailto:{{$contact->email}}" class="underline">{{$contact->email}}</a>
+
+                <div class="flex">
+                    <x-eva-email-outline class="h-6 w-6 mr-2 iconcolor"/>
+                    <a href="mailto:{{$contact->email}}" class="underline">{{$contact->email}}</a>
+                </div>
+
             @endif
             @if(!is_null($contact->phone))
                 <h4>Telefoon</h4>
-                <p>{{$contact->phone}}</p>
+                <div class="flex">
+                    <x-eva-phone-outline class="h-6 w-6 mr-2 iconcolor"/>
+                    <p>{{$contact->phone}}</p>
+                </div>
+
             @endif
             @if(!is_null($contact->website))
                 <h4>Website</h4>
-                <a href="{{$contact->website}}" class="underline break-words">{{$contact->website}}</a>
+                <div class="flex">
+                    <x-eva-globe-outline class="h-6 w-6 mr-2 iconcolor"/>
+                    <a href="{{$contact->website}}" class="underline break-words">{{$contact->website}}</a>
+                </div>
+
             @endif
         </div>
 
@@ -76,7 +92,7 @@
                             wire:click="goBack({{ $question->id}})"
                             class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
                          transition duration-300 shadow-sm underline flex items-center">
-                            <x-letsicon-back class="h-6 w-6 mr-2 text-black"/>
+                            <x-letsicon-back class="h-6 w-6 mr-2 iconcolor"/>
                             Vorige vraag
                         </button>
                     </li>
