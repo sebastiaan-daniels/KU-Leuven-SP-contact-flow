@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('website')->nullable();
             $table->string('phone')->nullable();
+            $table->string('extra')->nullable();
             $table->boolean('active');
         });
     }

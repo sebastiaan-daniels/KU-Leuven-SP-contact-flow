@@ -17,6 +17,7 @@ class ContactForm extends Form
     public $logo = null;
     public $website = null;
     public $phone = null;
+    public $extra = null;
 
     // create a new record
     public function create()
@@ -29,13 +30,30 @@ class ContactForm extends Form
             'logo' => $this->logo,
             'website' => $this->website,
             'phone' => $this->phone,
-            'active' => true
+            'active' => true,
+            'extra' => $this->extra,
         ]);
     }
 
     // update record
     public function update(Contact $contact) {
         $this->validate($this->rules($contact->id));
+        // Extra null validations
+        if ($this->email === '') {
+            $this->email = null;
+        }
+        if ($this->logo === '') {
+            $this->logo = null;
+        }
+        if ($this->website === '') {
+            $this->website = null;
+        }
+        if ($this->phone === '') {
+            $this->phone = null;
+        }
+        if ($this->extra === '') {
+            $this->extra = null;
+        }
         $contact->update([
             'name' => $this->name,
             'description' => $this->description,
@@ -43,6 +61,7 @@ class ContactForm extends Form
             'logo' => $this->logo,
             'website' => $this->website,
             'phone' => $this->phone,
+            'extra' => $this->extra,
         ]);
     }
 
@@ -62,6 +81,7 @@ class ContactForm extends Form
             'logo' => 'nullable|url',
             'website' => 'nullable|url',
             'phone' => 'nullable|string',
+            'extra' => 'nullable|string',
         ];
     }
 }

@@ -40,6 +40,7 @@
             <col class="w-72">
             <col class="w-72">
             <col class="w-72">
+            <col class="w-72">
             <col class="w-auto">
             <col class="w-36">
         </colgroup>
@@ -55,7 +56,8 @@
             </th>
             <th>Email</th>
             <th>Website</th>
-            <th>Telefoon </th>
+            <th>Telefoon</th>
+            <th>Extra info</th>
             <th></th>
             <th class="text-black">
                 <x-icts.form.select id="perPage"
@@ -77,6 +79,11 @@
                 <td class="text-left">{{ $contact->email }}</td>
                 <td class="text-left">{{ $contact->website }}</td>
                 <td class="text-left">{{ $contact->phone}}</td>
+                @if(!is_null($contact->extra))
+                    <td class="text-left underline"><span data-tippy-content="{{ $contact->extra}}">ja</span></td>
+                @else
+                    <td class="text-left">/</td>
+                @endif
                 <td></td>
                 <td>
                     <div class="border border-gray-300 rounded-md overflow-hidden m-2 grid grid-cols-2 h-10">
@@ -136,6 +143,10 @@
                     <x-icts.form.textarea id="description" type="textarea"
                              wire:model="form.description"
                              class="mt-1 block w-full"/>
+                    <x-label for="extra" value="Extra informatie" class="mt-4"/>
+                    <x-icts.form.textarea id="extra" type="textarea"
+                                          wire:model="form.extra"
+                                          class="mt-1 block w-full"/>
                     <x-label for="email" value="Email" class="mt-4"/>
                     <x-input id="email" type="text"
                              wire:model="form.email"

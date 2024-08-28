@@ -67,6 +67,13 @@
                 </div>
 
             @endif
+            @if(!is_null($contact->extra))
+                <h4>Bijkomende informatie</h4>
+                <div class="flex">
+                    <p>{{$contact->extra}}</p>
+                </div>
+
+            @endif
         </div>
 
     </div>
