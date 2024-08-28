@@ -29,7 +29,7 @@
                             color-on="text-white bg-sky-500"
                             class="w-20 h-auto" />
         <x-button class="primary" wire:click="newQuestion()">
-            Nieuwe vraag
+            Nieuwe optie
         </x-button>
     </div>
 
@@ -48,14 +48,14 @@
         <tr class="mt-3 text-left w-full">
             <th><span data-tippy-content="Interne ID in de database">ID</span></th>
             <th wire:click="resort('id')">
-                <span data-tippy-content="Sorteer op ID">Naam van de vraag</span>
+                <span data-tippy-content="Sorteer op ID">Naam van de Optie</span>
                 <x-heroicon-s-chevron-up
                     class="w-5 text-slate-400
                 {{$orderAsc ?: 'rotate-180'}}
-                {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
+                {{$orderBy === 'id' ? 'inline-block' : 'hidden'}}
             "/>
             </th>
-            <th>Vorige vraag</th>
+            <th>Vorige Optie</th>
             <th>Volgende Vraag</th>
             <th>Volgend Contact </th>
             <th></th>
@@ -130,9 +130,9 @@
         @endphp
         <x-slot name="title">
             @if(is_null($form->id))
-                <h2>Vraag aanmaken</h2>
+                <h2>Vraag/Optie aanmaken</h2>
             @else
-                <h2>Vraag aanpassen</h2>
+                <h2>Vraag/Optie aanpassen</h2>
             @endif
         </x-slot>
         <x-slot name="content">
@@ -149,10 +149,6 @@
 
             <div class="flex flex-row gap-4 mt-4">
                 <div class="flex-1 flex-col gap-2">
-                    <x-label for="name" value="Naam" class="mt-4"/>
-                    <x-input id="name" type="text"
-                             wire:model="form.name"
-                             class="mt-1 block w-full"/>
                     <x-label for="parent" value="Vorige vraag" class="mt-4"/>
                     <x-icts.form.select wire:model="form.parent_id" id="parent" class="block w-30">
                         <option value="">Selecteer vorige vraag (parent)</option>
@@ -160,13 +156,18 @@
                             <option value="{{ $parent->id }}">{{$parent->id}}: {{ $parent->name }}</option>
                         @endforeach
                     </x-icts.form.select>
+                    <x-label for="name" value="Naam van de optie" class="mt-4"/>
+                    <x-input id="name" type="text"
+                             wire:model="form.name"
+                             class="mt-1 block w-full"/>
+
                     <hr class="border-2 my-8">
                     <x-label for="child_question" value="Volgende vraag" class="mt-4"/>
                     <x-input id="child_question" type="text"
                                           wire:model="form.child_question"
                                           class="mt-1 block w-full"/>
 
-
+                    <h3>OF*</h3>
                     <x-label for="contact_id" value="Contactinfo na selectie" class="mt-4"/>
                     <x-icts.form.select wire:model="form.contact_id" id="contact_id" class="block w-30">
                         <option value="">Selecteer de contactinfo na deze optie</option>
@@ -174,6 +175,7 @@
                             <option value="{{ $contact->id }}">{{ $contact->name }}</option>
                         @endforeach
                     </x-icts.form.select>
+                    <p><span class="italic">*je kan enkel de volgende vraag ingeven of een contactpunt selecteren. Niet allebei.</span></p>
 
 {{--                    <x-input id="contact" type="text"--}}
 {{--                             wire:model="form.contact_id"--}}
