@@ -87,7 +87,7 @@
                     <button
                         wire:click="updateCurrentQuestion({{ $child->id }})"
                         class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
-                         transition duration-300 shadow-sm underline flex items-center">
+                         transition duration-300 shadow-sm underline flex items-center text-left">
                         {{ $child->name }}
                     </button>
                 </li>
@@ -98,7 +98,7 @@
                         <button
                             wire:click="goBack({{ $question->id}})"
                             class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
-                         transition duration-300 shadow-sm underline flex items-center">
+                         transition duration-300 shadow-sm underline flex items-center text-left">
                             <x-letsicon-back class="h-6 w-6 mr-2 iconcolor"/>
                             Vorige vraag
                         </button>

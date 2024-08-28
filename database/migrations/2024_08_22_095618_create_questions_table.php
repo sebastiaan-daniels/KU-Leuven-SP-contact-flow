@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('type_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('contact_id')->nullable()->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('parent_id')->nullable()->constrained('questions')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('questions')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('child_question')->nullable();
             $table->boolean('active');

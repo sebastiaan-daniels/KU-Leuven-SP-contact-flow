@@ -202,7 +202,19 @@
     <x-confirmation-modal id="deleteConfirmation"
                           wire:model.live="showConfirmation">
         <x-slot name="title">Verwijder record</x-slot>
-        <x-slot name="content">Ben je zeker dat je  <b>{{ $form->name }}</b> wilt verwijderen?</x-slot>
+        <x-slot name="content">
+            <p>
+                Ben je zeker dat je  <b>{{ $form->name }}</b> wilt verwijderen?
+            </p>
+            @if($this->countChildren($form->id) >= 1)
+                <p class="mt-1">
+                    <b>OPGELET:</b> er zijn <b>{{$this->countChildren($form->id)}}</b> vragen direct verbonden aan deze
+                    vraag. Zij <b>(en de vervolgvragen)</b> zullen
+                    allemaal verwijderd worden!
+                </p>
+            @endif
+
+        </x-slot>
         <x-slot name="footer">
             <x-button @click="$wire.showConfirmation = false" class="mr-1 bg-white hover:bg-white focus:bg-white active:bg-white">
                 <p class="text-black">Annuleren</p>

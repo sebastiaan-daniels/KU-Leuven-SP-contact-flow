@@ -38,6 +38,12 @@ class Questions extends Component
     {
         return Question::whereNotNull('child_question')->get();
     }
+
+    public function countChildren($question)
+    {
+        //dd($question);
+        return Question::where('parent_id', '=', $question)->count();
+    }
     public function resort($column)
     {
         $this->orderBy === $column ?
@@ -91,6 +97,7 @@ class Questions extends Component
 
     public function deleteRecord(Question $question)
     {
+        // Count children!
         $this->form->delete($question);
         $this->showConfirmation = false;
         $this->dispatch('swal:toast', [
