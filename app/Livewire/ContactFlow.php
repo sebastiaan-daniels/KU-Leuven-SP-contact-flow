@@ -34,6 +34,9 @@ class ContactFlow extends Component
         // Fetches the ID of the parent question and sets it as the current question.
         $question = $this->fetchCurrentQuestionById($id);
         $this->currentQuestion = $question->parent_id;
+        if ($id === 1) {
+            $this->currentQuestion = 1;
+        }
     }
 
     public function fetchContactById($id)

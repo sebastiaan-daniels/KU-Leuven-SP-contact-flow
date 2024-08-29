@@ -1,5 +1,4 @@
 <div>
-    {{-- show preloader while fetching data in the background --}}
     <style>
 {{--        ICTS Style guide, not gonna bother tailwinding this--}}
 
@@ -48,6 +47,16 @@
         @endphp
 
         <h2>{{$contact->description}}</h2>
+        <div >
+            <button
+                wire:click="goBack(1)"
+                class="w-full sm:w-32 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
+                         transition duration-300 shadow-sm underline flex items-center text-left">
+                <x-eva-home-outline class="h-6 w-6 mr-2 iconcolor"/>
+                Terug
+            </button>
+        </div>
+
         <div class="contact">
             <div class="ml-3 py-3">
                 <h3>{{$contact->name}}</h3>
@@ -83,8 +92,8 @@
                     </div>
 
                 @endif
-            </div>
 
+            </div>
         </div>
 
 
