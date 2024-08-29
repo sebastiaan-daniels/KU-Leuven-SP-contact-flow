@@ -65,7 +65,7 @@
 
                     <div class="flex">
                         <x-eva-email-outline class="h-6 w-6 mr-2 iconcolor"/>
-                        <a href="mailto:{{$contact->email}}" class="underline">{{$contact->email}}</a>
+                        <a href="{{$contact->email}}" class="underline">contact</a>
                     </div>
 
                 @endif

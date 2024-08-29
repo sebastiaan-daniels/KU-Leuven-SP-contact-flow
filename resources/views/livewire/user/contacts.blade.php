@@ -40,7 +40,7 @@
             <col class="w-72">
             <col class="w-72">
             <col class="w-72">
-            <col class="w-72">
+            <col class="w-36">
             <col class="w-auto">
             <col class="w-36">
         </colgroup>
@@ -54,7 +54,7 @@
                 {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
             "/>
             </th>
-            <th>Email</th>
+            <th>Email (Wie is Wie)</th>
             <th>Website</th>
             <th>Telefoon</th>
             <th>Extra info</th>
@@ -147,7 +147,7 @@
                     <x-icts.form.textarea id="extra" type="textarea"
                                           wire:model="form.extra"
                                           class="mt-1 block w-full"/>
-                    <x-label for="email" value="Email" class="mt-4"/>
+                    <x-label for="email" value="Email (Link naar wie is wie!)" class="mt-4"/>
                     <x-input id="email" type="text"
                              wire:model="form.email"
                              class="mt-1 block w-full"/>

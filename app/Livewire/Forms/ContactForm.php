@@ -77,7 +77,7 @@ class ContactForm extends Form
         return [
             'name' => ['required', Rule::unique('contacts', 'name')->ignore($id)],
             'description' => 'required|string',
-            'email' => 'nullable|email',
+            'email' => 'nullable|url',
             'logo' => 'nullable|url',
             'website' => 'nullable|url',
             'phone' => 'nullable|string',

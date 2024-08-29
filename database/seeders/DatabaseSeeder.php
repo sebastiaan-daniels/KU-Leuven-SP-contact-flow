@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
                 [
                     'name'=>'KU Leuven ICTS Servicepunt',
                     'description'=>'Voor algemene vragen kan je het ICTS Servicepunt contacteren',
-                    'email'=>'icts@kuleuven.be',
+                    'email'=>'https://www.kuleuven.be/wieiswie/nl/person/ue707990',
                     'phone'=>'+32 16 32 28 00',
                     'logo'=>null,
                     'website'=>'https://admin.kuleuven.be/icts/servicepunt',
@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
                     'name'=>'KU Leuven Studentenadministratie',
                     'description'=>'Voor al je administratieve vragen als student, contacteer je best de Studentenadministratie
                     . Wij zijn de IT dienst en kunnen je hier niet bij helpen.',
-                    'email'=>'reg@kuleuven.be',
+                    'email'=>'https://www.kuleuven.be/wieiswie/nl/person/ue706877',
                     'phone'=>'+32 16 32 40 40',
                     'logo'=>null,
                     'website'=>'https://associatie.kuleuven.be/support/sa',
@@ -136,7 +136,7 @@ class DatabaseSeeder extends Seeder
                     'name'=>'KU Leuven Personeelsdienst',
                     'description'=>'Voor al je administratieve vragen als medewerker, contacteer je best de Personeelsdienst
                     . Wij zijn de IT dienst en kunnen je hier niet bij helpen.',
-                    'email'=>'personeelsdienst@kuleuven.be',
+                    'email'=>'https://www.kuleuven.be/wieiswie/nl/person/ue707101',
                     'phone'=>'+32 16 32 83 00',
                     'logo'=>null,
                     'website'=>'https://admin.kuleuven.be/personeel/wegbeschrijving.html',
@@ -147,7 +147,7 @@ class DatabaseSeeder extends Seeder
                     'name'=>'KU Leuven Studiegelden',
                     'description'=>'Voor al je financiële vragen als student, contacteer je best de dienst Studiegelden
                     . Wij zijn de IT dienst en kunnen je hier niet bij helpen.',
-                    'email'=>'sab@kuleuven.be',
+                    'email'=>'https://www.kuleuven.be/wieiswie/nl/person/ue707174',
                     'phone'=>'+32 16 32 37 70',
                     'logo'=>null,
                     'website'=>'https://www.kuleuven.be/onderwijs/student/studiegelden',
