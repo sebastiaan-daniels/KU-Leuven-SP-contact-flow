@@ -164,7 +164,7 @@ class DatabaseSeeder extends Seeder
                 [
                     'type_id'=>1,
                     'contact_id'=>null,
-                    'name'=>'Wat voor type ben je?',
+                    'name'=>'START CONTACT FLOW',
                     'child_question'=>'Wat voor type ben je?',
                     'parent_id'=>null,
                     'active'=>true

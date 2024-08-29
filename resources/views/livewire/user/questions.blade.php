@@ -77,7 +77,7 @@
             @php
                 $contact = $this->fetchContactFromId($question->contact_id);
                 if (is_null($contact)) {
-                    $contactName = '/';
+                    $contactName = null;
                 } else {
                     $contactName = $contact->name;
                 }
@@ -89,12 +89,16 @@
                     $parentName = $parent->id . ': ' . $parent->name;
                 }
             @endphp
-            <tr class="border-t border-gray-300 [&>td]:p-2">
+            @if(is_null($question->child_question)  && is_null($contactName))
+                <tr class="border-t border-gray-300 [&>td]:p-2 bg-red-300">
+            @else
+                <tr class="border-t border-gray-300 [&>td]:p-2">
+            @endif
                 <td class="text-left">{{ $question->id }}</td>
                 <td class="text-left">{{ $question->name }}</td>
                 <td class="text-left">{{ $parentName}}</td>
                 <td class="text-left">{{ $question->child_question ?? '/'}}</td>
-                <td class="text-left">{{$contactName}}</td>
+                <td class="text-left">{{$contactName ?? '/'}}</td>
                 <td></td>
                 <td>
                     <div class="border border-gray-300 rounded-md overflow-hidden m-2 grid grid-cols-2 h-10">
@@ -103,11 +107,22 @@
                             class="text-gray-400 hover:text-sky-100 hover:bg-sky-500 transition border-r border-gray-300">
                             <x-phosphor-pencil-line-duotone class="inline-block w-5 h-5"/>
                         </button>
-                        <button
-                            wire:click="confirmation({{ $question->id }})"
-                            class="text-gray-400 hover:text-red-100 hover:bg-red-500 transition">
-                            <x-phosphor-trash-duotone class="inline-block w-5 h-5"/>
-                        </button>
+                        @if($question->id === 1)
+                            <button disabled
+                                class="text-gray-400 bg-red-400">
+                                <span data-tippy-content="Je kan de eerste vraag niet verwijderen">
+                                <x-phosphor-trash-duotone class="inline-block w-5 h-5"/>
+                            </span>
+
+                            </button>
+                        @else
+                            <button
+                                wire:click="confirmation({{ $question->id }})"
+                                class="text-gray-400 hover:text-red-100 hover:bg-red-500 transition">
+                                <x-phosphor-trash-duotone class="inline-block w-5 h-5"/>
+                            </button>
+                        @endif
+
                     </div>
                 </td>
             </tr>
@@ -149,18 +164,20 @@
 
             <div class="flex flex-row gap-4 mt-4">
                 <div class="flex-1 flex-col gap-2">
-                    <x-label for="parent" value="Vorige vraag" class="mt-4"/>
-                    <x-icts.form.select wire:model="form.parent_id" id="parent" class="block w-30">
-                        <option value="">Selecteer vorige vraag (parent)</option>
-                        @foreach($nonEndingQuestions as $parent)
-                            <option value="{{ $parent->id }}">{{$parent->id}}: {{ $parent->name }}</option>
-                        @endforeach
-                    </x-icts.form.select>
+                    @if(!is_null($form->parent_id) || is_null($form->id))
+                        <x-label for="parent" value="Vorige vraag" class="mt-4"/>
+                        <x-icts.form.select wire:model="form.parent_id" id="parent" class="block w-30">
+                            <option value="">Selecteer vorige vraag (parent)</option>
+                            @foreach($nonEndingQuestions as $parent)
+                                <option value="{{ $parent->id }}">{{$parent->id}}: {{ $parent->name }}</option>
+                            @endforeach
+                        </x-icts.form.select>
+                    @endif
+
                     <x-label for="name" value="Naam van de optie" class="mt-4"/>
                     <x-input id="name" type="text"
                              wire:model="form.name"
                              class="mt-1 block w-full"/>
-
                     <hr class="border-2 my-8">
                     <x-label for="child_question" value="Volgende vraag" class="mt-4"/>
                     <x-input id="child_question" type="text"
