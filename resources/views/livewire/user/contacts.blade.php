@@ -76,9 +76,15 @@
         @forelse($contacts as $contact)
             <tr class="border-t border-gray-300 [&>td]:p-2">
                 <td class="text-left"><span data-tippy-content="{{ $contact->description}}">{{ $contact->name }}</span></td>
-                <td class="text-left">{{ $contact->email }}</td>
-                <td class="text-left">{{ $contact->website }}</td>
-                <td class="text-left">{{ $contact->phone}}</td>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$contact->email}}</x-slot>
+                </x-icts.cutlongtext>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$contact->website}}</x-slot>
+                </x-icts.cutlongtext>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$contact->phone}}</x-slot>
+                </x-icts.cutlongtext>
                 @if(!is_null($contact->extra))
                     <td class="text-left underline"><span data-tippy-content="{{ $contact->extra}}">ja</span></td>
                 @else
