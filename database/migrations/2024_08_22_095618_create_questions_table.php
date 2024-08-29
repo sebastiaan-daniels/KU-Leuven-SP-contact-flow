@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('type_id')->constrained()->restrictOnDelete()->cascadeOnUpdate();
             $table->foreignId('contact_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->foreignId('parent_id')->nullable()->constrained('questions')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('name');
-            $table->string('child_question')->nullable();
+            $table->text('name');
+            $table->text('child_question')->nullable();
             $table->boolean('active');
         });
     }
