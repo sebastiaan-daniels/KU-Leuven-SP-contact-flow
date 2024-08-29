@@ -36,47 +36,57 @@
 
     @if($children->isEmpty())
         @php
-            $contact = $this->fetchContactById($question->contact_id)
+            $contact = $this->fetchContactById($question->contact_id);
+
+        // Dit betekend dat er geen child questions zijn, maar ook geen contact
+        // Dit gebeurd wanneer men een vervolgvraag invult op een optie, maar geen verdere opties aanmaakt
+        // Skill issue van de vragenbeheerder dus, maar we gaan hem toch opvangen
+            if(is_null($contact)) {
+                // We halen het eerste contact op, dit is Waarschijnlijk het servicepunt
+                $contact = $this->fetchContactById(1);
+            }
         @endphp
+
         <h2>{{$contact->description}}</h2>
-    <div class="contact">
-        <div class="ml-3 py-3">
-            <h3>{{$contact->name}}</h3>
-            @if(!is_null($contact->email))
-                <h4>Email:</h4>
+        <div class="contact">
+            <div class="ml-3 py-3">
+                <h3>{{$contact->name}}</h3>
+                @if(!is_null($contact->email))
+                    <h4>Email:</h4>
 
-                <div class="flex">
-                    <x-eva-email-outline class="h-6 w-6 mr-2 iconcolor"/>
-                    <a href="mailto:{{$contact->email}}" class="underline">{{$contact->email}}</a>
-                </div>
+                    <div class="flex">
+                        <x-eva-email-outline class="h-6 w-6 mr-2 iconcolor"/>
+                        <a href="mailto:{{$contact->email}}" class="underline">{{$contact->email}}</a>
+                    </div>
 
-            @endif
-            @if(!is_null($contact->phone))
-                <h4>Telefoon</h4>
-                <div class="flex">
-                    <x-eva-phone-outline class="h-6 w-6 mr-2 iconcolor"/>
-                    <p>{{$contact->phone}}</p>
-                </div>
+                @endif
+                @if(!is_null($contact->phone))
+                    <h4>Telefoon</h4>
+                    <div class="flex">
+                        <x-eva-phone-outline class="h-6 w-6 mr-2 iconcolor"/>
+                        <p>{{$contact->phone}}</p>
+                    </div>
 
-            @endif
-            @if(!is_null($contact->website))
-                <h4>Website</h4>
-                <div class="flex">
-                    <x-eva-globe-outline class="h-6 w-6 mr-2 iconcolor"/>
-                    <a href="{{$contact->website}}" class="underline break-words">{{$contact->website}}</a>
-                </div>
+                @endif
+                @if(!is_null($contact->website))
+                    <h4>Website</h4>
+                    <div class="flex">
+                        <x-eva-globe-outline class="h-6 w-6 mr-2 iconcolor"/>
+                        <a href="{{$contact->website}}" class="underline break-words">{{$contact->website}}</a>
+                    </div>
 
-            @endif
-            @if(!is_null($contact->extra))
-                <h4>Bijkomende informatie</h4>
-                <div class="flex">
-                    <p>{{$contact->extra}}</p>
-                </div>
+                @endif
+                @if(!is_null($contact->extra))
+                    <h4>Bijkomende informatie</h4>
+                    <div class="flex">
+                        <p>{{$contact->extra}}</p>
+                    </div>
 
-            @endif
+                @endif
+            </div>
+
         </div>
 
-    </div>
 
     @else
         <h1 class="w-full">{{$question->child_question}}</h1>
