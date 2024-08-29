@@ -95,10 +95,18 @@
                 <tr class="border-t border-gray-300 [&>td]:p-2">
             @endif
                 <td class="text-left">{{ $question->id }}</td>
-                <td class="text-left">{{ $question->name }}</td>
-                <td class="text-left">{{ $parentName}}</td>
-                <td class="text-left">{{ $question->child_question ?? '/'}}</td>
-                <td class="text-left">{{$contactName ?? '/'}}</td>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$question->name}}</x-slot>
+                </x-icts.cutlongtext>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$parentName}}</x-slot>
+                </x-icts.cutlongtext>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$question->child_question ?? '/'}}</x-slot>
+                </x-icts.cutlongtext>
+                <x-icts.cutlongtext>
+                    <x-slot name="data">{{$contactName ?? '/'}}</x-slot>
+                </x-icts.cutlongtext>
                 <td></td>
                 <td>
                     <div class="border border-gray-300 rounded-md overflow-hidden m-2 grid grid-cols-2 h-10">
