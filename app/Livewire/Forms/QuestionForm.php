@@ -12,7 +12,7 @@ class QuestionForm extends Form
 {
     public $id = null;
 
-    public $type = 1;
+    public $type_id = null;
     public $contact_id = null;
     public $name = null;
     public $child_question = null;
@@ -28,7 +28,7 @@ class QuestionForm extends Form
         $this->validate($this->rules());
         $this->validateChildQuestionOrContactId();
         Question::create([
-            'type_id' => $this->type,
+            'type_id' => $this->type_id,
             'contact_id' => $this->contact_id,
             'name' => $this->name,
             'child_question' => $this->child_question,
@@ -46,7 +46,7 @@ class QuestionForm extends Form
         $this->validate($this->rules($question->id), $this->messages());
         $this->validateChildQuestionOrContactId();
         $question->update([
-            'type_id' => $this->type,
+            'type_id' => $this->type_id,
             'contact_id' => $this->contact_id,
             'name' => $this->name,
             'child_question' => $this->child_question,
@@ -65,7 +65,7 @@ class QuestionForm extends Form
     protected function rules($id = null)
     {
         return [
-            'type' => 'required',
+            'type_id' => 'required',
             'contact_id' => 'nullable|integer',
             'name' => 'required|string',
             'child_question' => 'nullable|string',
@@ -76,7 +76,7 @@ class QuestionForm extends Form
     protected function messages()
     {
         return [
-            'type.required' => 'The question type is required.',
+            'type_id.required' => 'The question type is required.',
             'contact_id.integer' => 'Ongeldig contact, Hoe zie je deze error zelfs?',
             'name.required' => 'Je moet een vraag invullen',
             'name.string' => 'The question name must be a string.',

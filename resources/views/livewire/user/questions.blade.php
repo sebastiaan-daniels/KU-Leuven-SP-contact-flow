@@ -88,9 +88,13 @@
                 } else {
                     $parentName = $parent->id . ': ' . $parent->name;
                 }
+
+                $questionType = $this->fetchTypeFromQuestionID($question->id);
             @endphp
             @if(is_null($question->child_question)  && is_null($contactName))
                 <tr class="border-t border-gray-300 [&>td]:p-2 bg-red-300">
+            @elseif($questionType->type === 'important')
+                <tr class="border-t border-gray-300 [&>td]:p-2 bg-yellow-300">
             @else
                 <tr class="border-t border-gray-300 [&>td]:p-2">
             @endif
@@ -186,6 +190,16 @@
                     <x-input id="name" type="text"
                              wire:model="form.name"
                              class="mt-1 block w-full"/>
+                    @if(!is_null($form->parent_id) || is_null($form->id))
+                        <x-label for="q_type" value="Vraag Type" class="mt-4"/>
+                        <x-icts.form.select wire:model="form.type_id" id="q_type" class="block w-30">
+                            <option value="">Selecteer het vraag type</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type->id}}">{{$type->type}}</option>
+                            @endforeach
+                        </x-icts.form.select>
+                    @endif
+{{--                        Volgende vragen--}}
                     <hr class="border-2 my-8">
                     <x-label for="child_question" value="Volgende vraag" class="mt-4"/>
                     <x-input id="child_question" type="text"

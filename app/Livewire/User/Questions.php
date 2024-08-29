@@ -4,6 +4,7 @@ namespace App\Livewire\User;
 
 use App\Models\Contact;
 use App\Models\Question;
+use App\Models\Type;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Livewire\Forms\QuestionForm;
@@ -43,6 +44,11 @@ class Questions extends Component
     {
         //dd($question);
         return Question::where('parent_id', '=', $question)->count();
+    }
+
+    public function fetchTypeFromQuestionID($questionId)
+    {
+        return Type::find($this->fetchQuestionFromId($questionId)->type_id);
     }
     public function resort($column)
     {
@@ -118,6 +124,8 @@ class Questions extends Component
         $questions = $query->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
 
-        return view('livewire.user.questions', compact('questions', 'contacts'));
+        $types = Type::where('active', true)->get();
+
+        return view('livewire.user.questions', compact('questions', 'contacts', 'types'));
     }
 }

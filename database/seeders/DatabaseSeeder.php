@@ -17,13 +17,17 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('types')->insert(
             [
-                // Types here
+                // Types here. DO NOT REMOVE I PROD
                 [
                     'type' => 'standard',
                     'active' => true
                 ],
                 [
                     'type' => 'question',
+                    'active' => false //bestaat nog niet, → 2025
+                ],
+                [
+                    'type' => 'important',
                     'active' => true
                 ]
             ]
@@ -31,7 +35,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert(
             [
-                // users here
+                // users here, Remove (Or change) in PROD
                 [
                     'name' => 'admin',
                     'email' => 'admin@admin.dev',
@@ -60,6 +64,8 @@ class DatabaseSeeder extends Seeder
                 Indien de klant bv u0123456 ingeeft, zal die naar bv vraag 4 gaan
                 een student naar 5, etc...
                 */
+
+                // 08/2024 Parameters doen nog niets, eerder toekomstgericht
                 [
                     'key'=>'r',
                     'value'=>null,
