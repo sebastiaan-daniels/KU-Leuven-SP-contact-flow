@@ -21,10 +21,16 @@
         }
         .soft_bg {
             background-color: #d4e7f3;
+            word-break: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
         }
 
         .contact {
             background-color: #d4e7f3;
+            word-break: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
         }
         .soft_bg:hover {
             background-color: #147fa1;
@@ -65,7 +71,7 @@
 
                     <div class="flex">
                         <x-eva-email-outline class="h-6 w-6 mr-2 iconcolor"/>
-                        <a href="{{$contact->email}}" class="underline">contact</a>
+                        <a href="{{$contact->email}}" class="underline ">contact</a>
                     </div>
 
                 @endif
