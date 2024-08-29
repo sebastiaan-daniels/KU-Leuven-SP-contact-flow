@@ -90,7 +90,7 @@
     </main>
     <footer class="container mx-auto p-4 text-sm border-t flex justify-between items-center">
         <div>ICTS KULeuven - © {{ date('Y') }}</div>
-        <div>version 1.0-alpha.1</div>
+        <div>version 1.0-alpha.2</div>
         <div><a href="mailto:contact@sebastiaandaniels.com">Built with ❤ by S.D.</a></div>
 
     </footer>
