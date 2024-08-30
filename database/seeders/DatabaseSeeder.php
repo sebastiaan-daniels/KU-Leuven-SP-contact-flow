@@ -3,12 +3,22 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use function Laravel\Prompts\error;
 use function Laravel\Prompts\table;
 
 class DatabaseSeeder extends Seeder
+// This file is optimized for both production and development. You should NOT
+// touch anything here
+
+// Make sure to set the correct environment in the .env file
+// APP_ENV=local
+//APP_ENV=production
+
+// Also make sure to set debug to false in prod!
 {
     /**
      * Seed the application's database.
@@ -33,26 +43,44 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        DB::table('users')->insert(
-            [
-                // users here, Remove (Or change) in PROD
+        if (App::environment('local')) {
+            DB::table('users')->insert(
                 [
-                    'name' => 'admin',
-                    'email' => 'admin@admin.dev',
-                    'password' => Hash::make('Admin1234'),
-                    'active' => true,
-                    'admin' => true
-                ],
-                [
-                    'name' => 'user',
-                    'email' => 'user@user.dev',
-                    'password' => Hash::make('User1234'),
-                    'active' => true,
-                    'admin' => false
-                ]
+                    [
+                        'name' => 'admin',
+                        'email' => 'admin@admin.dev',
+                        'password' => Hash::make('Admin1234'),
+                        'active' => true,
+                        'admin' => true
+                    ],
+                    [
+                        'name' => 'user',
+                        'email' => 'user@user.dev',
+                        'password' => Hash::make('User1234'),
+                        'active' => true,
+                        'admin' => false
+                    ]
 
-            ]
-        );
+                ]
+            );
+        }
+        elseif (App::environment('production')) {
+            DB::table('users')->insert(
+                [
+                    [
+                        'name' => 'Servicepunt Admin',
+                        'email' => 'servaes.punt@kuleuven.be',
+                        'password' => Hash::make('Servicepunt123'),
+                        'active' => true,
+                        'admin' => true
+                    ],
+                ]
+            );
+        }
+        else {
+            error('Incorrect environment set');
+        }
+
 
         DB::table('parameters')->insert(
             [
@@ -107,15 +135,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('contacts')->insert(
             [
-                // contacts here
-                /*
-                 * $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('website')->nullable();
-            $table->string('phone')->nullable();
-            $table->boolean('active');*/
-                // DEFAULTS
+                // DEFAULTS, both in local and prod
                 //ICTS
                 [
                     'name'=>'KU Leuven ICTS Servicepunt',
@@ -162,10 +182,11 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+
         DB::table('questions')->insert(
             [
-                // questions here
-                // Niet aanpassen in de seeder bij Production!
+                // Default question is VERPLICHT!
+
                 // Onderstaande vragen zijn voor testing!
                 [
                     'type_id'=>1,
@@ -174,73 +195,81 @@ class DatabaseSeeder extends Seeder
                     'child_question'=>'Wat voor type ben je?',
                     'parent_id'=>null,
                     'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>1,
-                    'name'=>'Medewerker',
-                    'child_question'=>null,
-                    'parent_id'=>1,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>null,
-                    'name'=>'Student',
-                    'child_question'=>'Wat is je probleem?',
-                    'parent_id'=>1,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>null,
-                    'name'=>'Toekomstige student',
-                    'child_question'=>'Wat is je probleem?',
-                    'parent_id'=>1,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>1,
-                    'name'=>'ICT vraag',
-                    'child_question'=>null,
-                    'parent_id'=>3,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>2,
-                    'name'=>'Jobstudenten vraag',
-                    'child_question'=>null,
-                    'parent_id'=>3,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>1,
-                    'name'=>'Ik kan niet inloggen op Toledo',
-                    'child_question'=>null,
-                    'parent_id'=>4,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>4,
-                    'name'=>'Ik heb een financiële vraag',
-                    'child_question'=>null,
-                    'parent_id'=>4,
-                    'active'=>true
-                ],
-                [
-                    'type_id'=>1,
-                    'contact_id'=>1,
-                    'name'=>'Iets anders',
-                    'child_question'=>null,
-                    'parent_id'=>4,
-                    'active'=>true
-                ],
-
-            ]
+                ]
+                ]
         );
+
+        if (App::environment('local')) {
+            DB::table('questions')->insert(
+                [
+                    // Onderstaande vragen zijn voor testing!
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>1,
+                        'name'=>'Medewerker',
+                        'child_question'=>null,
+                        'parent_id'=>1,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>null,
+                        'name'=>'Student',
+                        'child_question'=>'Wat is je probleem?',
+                        'parent_id'=>1,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>null,
+                        'name'=>'Toekomstige student',
+                        'child_question'=>'Wat is je probleem?',
+                        'parent_id'=>1,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>1,
+                        'name'=>'ICT vraag',
+                        'child_question'=>null,
+                        'parent_id'=>3,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>2,
+                        'name'=>'Jobstudenten vraag',
+                        'child_question'=>null,
+                        'parent_id'=>3,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>1,
+                        'name'=>'Ik kan niet inloggen op Toledo',
+                        'child_question'=>null,
+                        'parent_id'=>4,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>4,
+                        'name'=>'Ik heb een financiële vraag',
+                        'child_question'=>null,
+                        'parent_id'=>4,
+                        'active'=>true
+                    ],
+                    [
+                        'type_id'=>1,
+                        'contact_id'=>1,
+                        'name'=>'Iets anders',
+                        'child_question'=>null,
+                        'parent_id'=>4,
+                        'active'=>true
+                    ],
+                ]
+            );
+        }
+
     }
 }
