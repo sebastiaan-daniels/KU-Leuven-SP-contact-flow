@@ -26,6 +26,17 @@
             overflow-wrap: break-word;
         }
 
+        .important_bg {
+            background-color: #ab0000;
+            word-break: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .important_bg:hover {
+            background-color: #ed1c1c;
+        }
+
         .contact {
             background-color: #d4e7f3;
             word-break: break-word;
@@ -109,16 +120,42 @@
     @else
         <h1 class="w-full">{{$question->child_question}}</h1>
         <x-icts.list type="ul" class="list-none text-sm">
+{{--            Aan de toekomstige maintainer:
+                2 keer loopen is uiteraard niet de beste manier om belangrijke vragen bovenaan te displayen.
+                Dit zou eigenlijk in de controller moeten, niet in de view. Maar hier had ik geen tijd voor.--}}
             @foreach($children as $child)
-                <li>
-                    @csrf
-                    <button
-                        wire:click="updateCurrentQuestion({{ $child->id }})"
-                        class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
+                @php
+                $type = $this->fetchTypeFromQuestionID($child->id);
+                 @endphp
+                @if($type->type === 'important')
+                    <li>
+                        @csrf
+                        <button
+                            wire:click="updateCurrentQuestion({{ $child->id }})"
+                            class="w-full sm:w-96 important_bg text-white font-bold py-4 my-1 px-6 hover:bg-blue-600
                          transition duration-300 shadow-sm underline flex items-center text-left">
-                        {{ $child->name }}
-                    </button>
-                </li>
+                            <x-ionicon-warning class="h-6 w-6 mr-2 text-white"/>
+                            {{ $child->name }}
+                            <x-ionicon-warning class="h-6 w-6 mx-2 text-white"/>
+                        </button>
+                    </li>
+                @endif
+            @endforeach
+            @foreach($children as $child)
+                @php
+                    $type = $this->fetchTypeFromQuestionID($child->id);
+                @endphp
+                @if($type->type !== 'important')
+                    <li>
+                        @csrf
+                        <button
+                            wire:click="updateCurrentQuestion({{ $child->id }})"
+                            class="w-full sm:w-96 soft_bg text-black py-4 my-1 px-6 hover:bg-blue-600
+                         transition duration-300 shadow-sm underline flex items-center text-left">
+                            {{ $child->name }}
+                        </button>
+                    </li>
+                @endif
             @endforeach
 
             @if(!is_null($question->parent_id))

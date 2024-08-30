@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Type;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Question;
@@ -43,6 +44,12 @@ class ContactFlow extends Component
     {
         return Contact::find($id);
     }
+
+    public function fetchTypeFromQuestionID($questionId)
+    {
+        return Type::find($this->fetchCurrentQuestionById($questionId)->type_id);
+    }
+
     public function render()
     {
         $question = $this->fetchCurrentQuestionById($this->currentQuestion);
