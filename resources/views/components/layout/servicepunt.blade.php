@@ -92,7 +92,7 @@
         <div>ICTS KULeuven - © {{ date('Y') }}</div>
         <div>version 1.0-alpha.3</div>
         <div><a href="mailto:contact@sebastiaandaniels.com">Built with ❤ by S.D.</a></div>
-
+\
     </footer>
 </div>
 @stack('script')

@@ -52,7 +52,7 @@
             }
         @endphp
 
-        <div class="container mx-auto p-4 text-sm sm:flex sm:justify-between sm:items-center">
+        <div class="container mx-auto py-4 text-sm sm:flex sm:justify-between sm:items-center">
             <h2>{{$contact->description}}</h2>
             <div >
                 <button
