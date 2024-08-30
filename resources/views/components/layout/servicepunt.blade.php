@@ -60,13 +60,14 @@
                         <x-dropdown-link href="{{ route('user.questions') }}">Vragen beheren</x-dropdown-link>
 
                         @if(auth()->user()->admin)
-                        {{-- admins only --}}
-                            <div class="border-t border-gray-100"></div>
-                        <div class="block px-4 py-2 text-xs text-gray-400">Admin</div>
-                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
-                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
-                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
-                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>
+{{--                            For future reference--}}
+{{--                        --}}{{-- admins only --}}
+{{--                            <div class="border-t border-gray-100"></div>--}}
+{{--                        <div class="block px-4 py-2 text-xs text-gray-400">Admin</div>--}}
+{{--                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>--}}
+{{--                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>--}}
+{{--                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>--}}
+{{--                        <x-dropdown-link href="{{ route('under-construction') }}">UC</x-dropdown-link>--}}
                         @endif
                         <div class="border-t border-gray-100"></div>
                         <form method="POST" action="{{ route('logout') }}">
@@ -90,9 +91,9 @@
     </main>
     <footer class="container mx-auto p-4 text-sm border-t flex justify-between items-center">
         <div>ICTS KULeuven - © {{ date('Y') }}</div>
-        <div>version 1.0-alpha.3</div>
+        <div>version 1.0-rc.1</div>
         <div><a href="mailto:contact@sebastiaandaniels.com">Built with ❤ by S.D.</a></div>
-\
+
     </footer>
 </div>
 @stack('script')
