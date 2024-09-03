@@ -6,10 +6,13 @@
         de ContactFlow
     </a>
 om de CF te volgen.</p>
-    <div class="mt-2">
-        <p>Demo accounts:</p>
-        <p>Email: user@user.dev | ww: User1234</p>
-        <p>Email: admin@admin.dev | ww: Admin1234</p>
-    </div>
+    @if(App::environment('local'))
+        <div class="mt-2">
+            <p>Demo accounts:</p>
+            <p>Email: user@user.dev | ww: User1234</p>
+            <p>Email: admin@admin.dev | ww: Admin1234</p>
+        </div>
+    @endif
+
 </x-layout.servicepunt>
 
