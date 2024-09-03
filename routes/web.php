@@ -3,6 +3,7 @@
 use App\Livewire\User\Contacts;
 use App\Livewire\User\Questions;
 use App\Livewire\ContactFlow;
+use App\Livewire\Documentation;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,6 +23,7 @@ Route::view('/','home')->name('home');
 // Contact pagina met mail
 Route::view('contact','contact')->name('contact');
 Route::get('contactflow',ContactFlow::class)->name('contactflow');
+Route::get('documentation',Documentation::class)->name('documentation');
 
 // CRUD pagina om contacten te beheren
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
