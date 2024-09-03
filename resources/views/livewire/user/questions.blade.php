@@ -7,6 +7,47 @@
         </x-icts.preloader>
     </div>
 
+    {{--    Dit toont de hulpsectie. Als je op het icoon drukt, gaat het open en sluit het.--}}
+    <div
+        x-data="{open:false}"
+        class="p-0 mb-4 flex flex-col gap-2">
+
+        <div class="flex justify-start">
+            <div class="px-4">
+                <x-heroicon-o-information-circle
+                    @click="open =!open"
+                    class="w-5 text-gray-400 cursor-pointer outline-0"/>
+            </div>
+        </div>
+
+        <div
+            x-show="open"
+            x-transition
+            style="display: none"
+            class="text-sky-900 bg-sky-50 border-t p-4">
+            <x-icts.list type="ul" class="list-outside mx-4 text-sm">
+                <li>
+                    Deze pagina wordt gebruikt voor het beheren van de <b>vragen</b>.
+                </li>
+                <li>
+                    Druk op
+                    <b>NIEUWE OPTIE</b>
+                    om een Optie & Vervolgvraag-of contact <b>toe te voegen</b>.
+                </li>
+                <li>
+                    Druk op het
+                    <x-phosphor-pencil-line-duotone class="inline-block w-5 h-5"/>
+                    icoon om een optie te <b>bewerken</b>.
+                </li>
+                <li>
+                    Druk op het
+                    <x-phosphor-trash-duotone class="inline-block w-5 h-5"/>
+                    icoon om een optie te <b>verwijderen</b>.
+                </li>
+            </x-icts.list>
+        </div>
+    </div>
+
     {{-- Filter --}}
     <div class="mb-4 flex md:flex-row flex-col gap-2">
         <div class="flex-1">
