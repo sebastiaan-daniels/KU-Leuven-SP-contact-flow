@@ -27,14 +27,14 @@
         }
 
         .important_bg {
-            background-color: #ab0000;
+            background-color: #ed1c1c;
             word-break: break-word;
             white-space: normal;
             overflow-wrap: break-word;
         }
 
         .important_bg:hover {
-            background-color: #ed1c1c;
+            background-color: #ab0000;
         }
 
         .contact {
