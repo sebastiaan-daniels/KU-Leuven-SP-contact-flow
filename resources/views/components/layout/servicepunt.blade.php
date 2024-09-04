@@ -56,7 +56,8 @@
                         <div class="block px-4 py-2 text-xs text-gray-400">Welkom, {{ auth()->user()->name }}</div>
 {{--                        <x-dropdown-link href="{{ route('dashboard') }}">Dashboard</x-dropdown-link>--}}
                         <x-dropdown-link href="{{ route('profile.show') }}">Update Profile</x-dropdown-link>
-                        <x-dropdown-link href="{{ route('documentation') }}">Hulp & Informatie</x-dropdown-link>
+{{--                        Voor de toekomst--}}
+{{--                        <x-dropdown-link href="{{ route('documentation') }}">Hulp & Informatie</x-dropdown-link>--}}
                         <x-dropdown-link href="{{ route('user.contacts') }}">Contacten beheren</x-dropdown-link>
                         <x-dropdown-link href="{{ route('user.questions') }}">Vragen beheren</x-dropdown-link>
 
@@ -92,7 +93,7 @@
     </main>
     <footer class="container mx-auto p-4 text-sm border-t flex justify-between items-center">
         <div>ICTS KULeuven - © {{ date('Y') }}</div>
-        <div>version 1.0-rc.3</div>
+        <div>version 1.0</div>
         <div><a href="mailto:contact@sebastiaandaniels.com">Built with ❤ by S.D.</a></div>
 
     </footer>
