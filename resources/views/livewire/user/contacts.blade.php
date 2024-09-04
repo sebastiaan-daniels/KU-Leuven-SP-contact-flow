@@ -182,12 +182,16 @@
 
             <div class="flex flex-row gap-4 mt-4">
                 <div class="flex-1 flex-col gap-2">
-                    <x-label for="Naam" value="Naam" class="mt-4"/>
+                    <x-label for="Naam"  class="mt-4">
+                        Naam<span class="text-red-600">*</span>
+                    </x-label>
                     <x-input id="Naam" type="text"
                              wire:model="form.name"
                              class="mt-1 block w-full"/>
-                    <x-label for="description" value="Beschrijving" class="mt-4"/>
-                    <x-icts.form.textarea id="description" type="textarea"
+                    <x-label for="description" class="mt-4">
+                        Beschrijving<span class="text-red-600">*</span>
+                    </x-label>
+                    <x-icts.form.textarea id="description*" type="textarea"
                              wire:model="form.description"
                              class="mt-1 block w-full"/>
                     <x-label for="extra" value="Extra informatie" class="mt-4"/>
