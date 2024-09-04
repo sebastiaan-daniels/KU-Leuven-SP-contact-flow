@@ -6,7 +6,7 @@ window.addEventListener('swal:toast', event => {
     // default settings for toasts
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'top',
         background: 'white',
         showConfirmButton: false,
         timer: 3000,
