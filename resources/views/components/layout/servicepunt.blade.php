@@ -18,7 +18,7 @@
             {{-- left navigation--}}
             <div class="flex items-center space-x-2">
                 {{-- Logo --}}
-                <a href="{{ route('home') }}">
+                <a href="{{ route('home') }}" alt="Home">
                     <x-icts.logo class="w-8 h-8"/>
                 </a>
                 <a class="hidden sm:block font-medium text-lg" href="{{ route('home') }}">
@@ -92,7 +92,7 @@
     </main>
     <footer class="container mx-auto p-4 text-sm border-t flex justify-between items-center">
         <div>ICTS KULeuven - © {{ date('Y') }}</div>
-        <div>version 1.0-rc.2</div>
+        <div>version 1.0-rc.3</div>
         <div><a href="mailto:contact@sebastiaandaniels.com">Built with ❤ by S.D.</a></div>
 
     </footer>
